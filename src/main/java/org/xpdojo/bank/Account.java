@@ -18,6 +18,17 @@ public class Account {
         return false;
     }
 
+    public boolean transfer(Account account,  int amount)
+    {
+        if (withdraw(amount))
+        {
+            account.deposit(amount);
+            return true;
+        }
+
+        return false;
+    }
+
     public int getBalance()
     {
         return balance;

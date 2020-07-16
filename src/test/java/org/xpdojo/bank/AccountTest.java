@@ -24,7 +24,30 @@ public class AccountTest {
         account.withdraw(20);
         assertThat(account.getBalance()).isEqualTo(10);
 
+    }
 
+    @Test
+    public void transferMoneySuccessfully() {
+        Account account1 = new Account();
+        account1.deposit(20);
+
+        Account account2 = new Account();
+        account1.transfer(account2, 10);
+
+        assertThat(account1.getBalance()).isEqualTo(10);
+        assertThat(account2.getBalance()).isEqualTo(10);
+    }
+
+    @Test
+    public void transferMoneyNotEnoughBalance() {
+        Account account1 = new Account();
+        account1.deposit(20);
+
+        Account account2 = new Account();
+        account1.transfer(account2, 30);
+
+        assertThat(account1.getBalance()).isEqualTo(20);
+        assertThat(account2.getBalance()).isEqualTo(0);
 
     }
 }
