@@ -1,24 +1,24 @@
 package org.xpdojo.bank;
 
 public class Account {
-    private int balance = 0;
+    private Money balance = new Money(0);
 
-    public void deposit(int amount)
+    public void deposit(Money amount)
     {
-        balance += amount;
+        balance.setAmount(balance.getAmount() + amount.getAmount());
     }
 
-    public boolean withdraw(int amount)
+    public boolean withdraw(Money amount)
     {
-        if (balance>=amount) {
-            balance -= amount;
+        if (balance.getAmount()>=amount.getAmount()) {
+            balance.setAmount(balance.getAmount() - amount.getAmount());
             return true;
         }
 
         return false;
     }
 
-    public boolean transfer(Account account,  int amount)
+    public boolean transfer(Account account,  Money amount)
     {
         if (withdraw(amount))
         {
@@ -29,7 +29,7 @@ public class Account {
         return false;
     }
 
-    public int getBalance()
+    public Money getBalance()
     {
         return balance;
     }
