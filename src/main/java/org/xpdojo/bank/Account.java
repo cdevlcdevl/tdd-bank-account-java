@@ -8,6 +8,16 @@ public class Account {
         balance += amount;
     }
 
+    public boolean withdraw(int amount)
+    {
+        if (balance>=amount) {
+            balance -= amount;
+            return true;
+        }
+
+        return false;
+    }
+
     public int getBalance()
     {
         return balance;
